@@ -1,6 +1,6 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
-test.only('Web Automation' , async ({ page }) =>
+test('Web Automation' , async ({ page }) =>
 {
     const products = page.locator(".card-body")
     const productName = "ZARA COAT 3"
