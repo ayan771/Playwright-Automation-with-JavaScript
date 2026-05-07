@@ -72,5 +72,4 @@ test('Web Automation' , async ({ page }) =>
             break;
         }
     };   
-    await page.pause();
 });
