@@ -1,13 +1,14 @@
-import { test, expect } from '@playwright/test';
+const { test, expect } = require('@playwright/test');
+const { TEST_CREDENTIALS, WEB_BASE_URL } = require('../config/env');
 
 test('Web Automation' , async ({ page }) =>
 {
     const products = page.locator(".card-body")
     const productName = "ZARA COAT 3"
     const email = "ayan@example.com"
-    await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill(email);
-    await page.locator("#userPassword").type("Ayan@123");
+    await page.goto(WEB_BASE_URL);
+    await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
+    await page.locator("#userPassword").fill(TEST_CREDENTIALS.password);
     await page.locator("[value='Login']").click();
     await page.waitForLoadState('networkidle');
     await page.locator(".card-body b").first().waitFor();

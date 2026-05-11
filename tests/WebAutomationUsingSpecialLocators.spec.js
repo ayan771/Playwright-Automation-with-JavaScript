@@ -7,9 +7,9 @@ test('Web App Logion', async ({ page }) => {
    const email = "ayan@example.com";
    const productName = 'ZARA COAT 3';
    const products = page.locator(".card-body");
-    await page.locator("#userEmail").fill(email);
-    await page.locator("#userPassword").type("Ayan@123");
-    await page.locator("[value='Login']").click();
+   await page.locator("#userEmail").fill(email);
+   await page.locator("#userPassword").type("Ayan@123");
+   await page.locator("[value='Login']").click();
    await page.locator(".card-body b").first().waitFor();
    const titles = await page.locator(".card-body b").allTextContents();
    console.log(titles); 
