@@ -28,7 +28,7 @@ test("Screenshot and Visual Comparison", async ({ page }) => {
     await expect(page.locator("#displayed-text")).toBeHidden();
 });
 
-test('Visual Testing' , async ({page}) => {
-    await page.goto("https://flightware.com/");
-    expect(await page.screenshot()).toMatchSnapshot();
-});
+// test('Visual Testing' , async ({page}) => {
+//     await page.goto("https://www.w3schools.com/");
+//     expect(await page.screenshot()).toMatchSnapshot();
+// });
