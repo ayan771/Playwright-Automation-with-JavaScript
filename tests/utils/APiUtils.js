@@ -30,7 +30,7 @@ class APiUtils
             }
             
             const loginResponseJson = await loginResponse.json();
-            token = loginResponseJson.token;
+            const token = loginResponseJson.token;
             return token;
         } catch (error) {
             throw new Error(`Failed to get auth token: ${error.message}`);
