@@ -5,7 +5,6 @@ test('Web Automation' , async ({ page }) =>
 {
     const products = page.locator(".card-body")
     const productName = "ZARA COAT 3"
-    const email = "ayan@example.com"
     await page.goto(WEB_BASE_URL);
     await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
     await page.locator("#userPassword").fill(TEST_CREDENTIALS.password);

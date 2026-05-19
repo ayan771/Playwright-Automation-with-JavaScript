@@ -1,17 +1,16 @@
 const { test, expect } = require('@playwright/test');
 const { POManager } = require('../pageobjects/POManager');
+const { TEST_CREDENTIALS , WEB_BASE_URL } = require('../config/env');
 
 
 test('Client App login', async ({ page }) => {
     const poManager = new POManager(page);
     //js file- Login js, DashboardPage
-    const username = "ayan@example.com";
-    const password = "Ayan@123"
-    const productName = 'Zara Coat 4';
+    const productName = 'iphone 13 pro';
     const products = page.locator(".card-body");
     const loginPage = poManager.getLoginPage();
     await loginPage.goTo();
-    await loginPage.validLogin(username, password);
+    await loginPage.validLogin();
 
     const dashboardPage = poManager.getDashboardPage();
     await dashboardPage.searchProductAddCart(productName);

@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { TEST_CREDENTIALS,  WEB_BASE_URL } from '../config/env';
 
 test('Web App Logion', async ({ page }) => {
 
-   await page.goto("https://rahulshettyacademy.com/client");
+   await page.goto(WEB_BASE_URL);
 
-   const email = "ayan@example.com";
    const productName = 'ZARA COAT 3';
    const products = page.locator(".card-body");
-   await page.locator("#userEmail").fill(email);
-   await page.locator("#userPassword").type("Ayan@123");
+   await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
+   await page.locator("#userPassword").type(TEST_CREDENTIALS.password);
    await page.locator("[value='Login']").click();
    await page.locator(".card-body b").first().waitFor();
    const titles = await page.locator(".card-body b").allTextContents();
