@@ -37,6 +37,10 @@ module.exports = {
 
     TEST_PRODUCT:
         process.env.TEST_PRODUCT ??
-        "ADIDAS ORIGINAL"
+        "ADIDAS ORIGINAL",
+
+    TEST_PRODUCT:
+        process.env.TEST_PRODUCT ??
+        "ZARA COAT 3"
 
 };
