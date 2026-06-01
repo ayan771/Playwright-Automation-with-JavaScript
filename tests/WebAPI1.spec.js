@@ -1,7 +1,8 @@
 const { test,expect,request } = require('@playwright/test')
 const {APiUtils} = require('./utils/APiUtils');
-const loginPayload = {userEmail:"ayan@example.com",userPassword:"Ayan@123"}
-const orderPayload = {orders: [{country: "Cuba", productOrderedId: "6960eae1c941646b7a8b3ed3"}]}
+const { TEST_CREDENTIALS,  WEB_BASE_URL, TEST_COUNTRY, TEST_PRODUCT_ID } = require ('../config/env');
+const loginPayload = {userEmail:TEST_CREDENTIALS.email, userPassword:TEST_CREDENTIALS.password}
+const orderPayload = {orders: [{country:TEST_COUNTRY, productOrderedId:TEST_PRODUCT_ID}]}
 let orderId
 let token;
 let response;
@@ -20,8 +21,7 @@ test('API Login and PLace order', async ({ page }) => {
     }, response.token );
 
 
-   await page.goto("https://rahulshettyacademy.com/client");
-   const email = "ayan@example.com";
+   await page.goto(WEB_BASE_URL);
    const productName = 'ZARA COAT 3';
    await page.locator("button[routerlink*='myorders']").click();
    await page.locator("tbody").waitFor();
