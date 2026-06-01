@@ -1,4 +1,4 @@
-const { WEB_ORDER_URL, WEB_BASE_URL } = require("../../config/env");
+const { WEB_ORDER_URL } = require("../../config/env");
 
 class APiUtils
 {
@@ -23,7 +23,7 @@ class APiUtils
     async getToken() {
     try {
         const loginResponse = await this.apiCall.post(
-            WEB_BASE_URL,
+            "https://rahulshettyacademy.com/api/ecom/auth/login",
             { data: this.loginPayload }
         );
             

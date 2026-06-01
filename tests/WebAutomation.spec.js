@@ -4,8 +4,8 @@ const { TEST_CREDENTIALS, WEB_BASE_URL } = require('../config/env');
 test('Web Automation' , async ({ page }) =>
 {
     const products = page.locator(".card-body")
-    const productName = "ZARA COAT 3"
-    const email = "ayan@example.com"
+    const productName = "ADIDAS ORIGINAL";
+    const email = TEST_CREDENTIALS.email;
     await page.goto(WEB_BASE_URL);
     await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
     await page.locator("#userPassword").fill(TEST_CREDENTIALS.password);
@@ -25,7 +25,7 @@ test('Web Automation' , async ({ page }) =>
     }
     await page.locator("[routerlink*='cart']").click();
     await page.locator("div li").first().waitFor();
-    const bool = await page.locator("h3:has-text('Zara Coat 3')").isVisible();
+    const bool = await page.locator("h3:has-text('ADIDAS ORIGINAL')").isVisible();
     expect(bool).toBeTruthy();
     await page.locator("text=Checkout").click();
     await page.locator('.field input.txt').nth(0).fill("");
