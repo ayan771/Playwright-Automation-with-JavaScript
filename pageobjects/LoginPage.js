@@ -14,6 +14,14 @@ class LoginPage {
         await this.page.goto(WEB_BASE_URL);
     }
 
+    async Login(username, password) {
+        await this.userName.type(username);
+        await this.password.type(password);
+        await this.signInbutton.click();
+        await this.page.waitForLoadState('networkidle');
+
+    }
+
     async validLogin() {
         await this.userName.type(TEST_CREDENTIALS.email);
         await this.password.type(TEST_CREDENTIALS.password);
@@ -21,6 +29,8 @@ class LoginPage {
         await this.page.waitForLoadState('networkidle');
 
     }
+
+    
 
 }
 module.exports = { LoginPage };

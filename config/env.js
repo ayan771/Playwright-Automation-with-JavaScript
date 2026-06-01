@@ -23,4 +23,12 @@ module.exports = {
         email: required("TEST_EMAIL"),
         password: required("TEST_PASSWORD"),
     },
+    TEST_COUNTRY: 
+        process.env.TEST_COUNTRY ??
+        "India",
+
+    TEST_PRODUCT_ID:
+        process.env.TEST_PRODUCT_ID ??
+        "6960eae1c941646b7a8b3ed3",
+
 };
