@@ -33,6 +33,10 @@ module.exports = {
 
     WEB_ORDER_URL:
         process.env.WEB_ORDER_URL ??
-        "https://rahulshettyacademy.com/api/ecom/order/create-order"
+        "https://rahulshettyacademy.com/api/ecom/order/create-order",
+
+    TEST_PRODUCT:
+        process.env.TEST_PRODUCT ??
+        "ADIDAS ORIGINAL"
 
 };

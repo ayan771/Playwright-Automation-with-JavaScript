@@ -1,10 +1,10 @@
 const { test, expect } = require('@playwright/test');
-const { TEST_CREDENTIALS, WEB_BASE_URL } = require('../config/env');
+const { TEST_CREDENTIALS, WEB_BASE_URL, TEST_PRODUCT } = require('../config/env');
 
 test('Web Automation' , async ({ page }) =>
 {
     const products = page.locator(".card-body")
-    const productName = "ADIDAS ORIGINAL";
+    const productName = TEST_PRODUCT;
     const email = TEST_CREDENTIALS.email;
     await page.goto(WEB_BASE_URL);
     await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
@@ -25,7 +25,7 @@ test('Web Automation' , async ({ page }) =>
     }
     await page.locator("[routerlink*='cart']").click();
     await page.locator("div li").first().waitFor();
-    const bool = await page.locator("h3:has-text('ADIDAS ORIGINAL')").isVisible();
+    const bool = await page.locator("h3:has-text('ADIDAS ORIGINAL)").isVisible();
     expect(bool).toBeTruthy();
     await page.locator("text=Checkout").click();
     await page.locator('.field input.txt').nth(0).fill("");
