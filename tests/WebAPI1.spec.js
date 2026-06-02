@@ -1,6 +1,6 @@
 const { test,expect,request } = require('@playwright/test')
 const {APiUtils} = require('./utils/APiUtils');
-const { TEST_CREDENTIALS,  WEB_BASE_URL, TEST_COUNTRY, TEST_PRODUCT_ID, TEST_PRODUCT } = require ('../config/env');
+const { TEST_CREDENTIALS,  WEB_BASE_URL, TEST_COUNTRY, TEST_PRODUCT_ID, TEST_PRODUCT, TEST_PRODUCT_2 } = require ('../config/env');
 const loginPayload = {userEmail:TEST_CREDENTIALS.email, userPassword:TEST_CREDENTIALS.password}
 const orderPayload = {orders: [{country:TEST_COUNTRY, productOrderedId:TEST_PRODUCT_ID}]}
 let orderId
