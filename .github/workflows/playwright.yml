@@ -35,5 +35,3 @@ env:
       API_BASE_URL: ${{ secrets.API_BASE_URL }}
       WEB_BASE_URL: ${{ secrets.WEB_BASE_URL }}
       WEB_ORDER_URL: ${{ secrets.WEB_ORDER_URL }}
-
-
