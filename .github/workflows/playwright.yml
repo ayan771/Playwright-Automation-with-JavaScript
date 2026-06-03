@@ -42,10 +42,6 @@ jobs:
         # Update apt repositories
       - name: Run apt-get update
         run: sudo apt-get update
-
-      # Install system dependencies separately
-      - name: Install Playwright dependencies
-        run: npx playwright install-deps
       
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
