@@ -41,7 +41,7 @@ jobs:
 
       - name: Install Playwright Browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: DEBUG=pw:browser npx playwright install --with-deps
+        run: npx playwright install firefox --with-deps
         timeout-minutes: 10
 
       - name: Install browser deps only (cache hit)
