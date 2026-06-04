@@ -8,6 +8,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-noble
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -15,8 +17,6 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4
@@ -25,3 +25,13 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+env:
+      TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+      TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+      TEST_COUNTRY: ${{ secrets.TEST_COUNTRY }}
+      TEST_PRODUCT: ${{ secrets.TEST_PRODUCT }}
+      TEST_PRODUCT_2: ${{ secrets.TEST_PRODUCT_2 }}
+      TEST_PRODUCT_ID: ${{ secrets.TEST_PRODUCT_ID }}
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      WEB_BASE_URL: ${{ secrets.WEB_BASE_URL }}
+      WEB_ORDER_URL: ${{ secrets.WEB_ORDER_URL }}

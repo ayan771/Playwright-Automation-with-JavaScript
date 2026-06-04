@@ -1,13 +1,14 @@
-import { test, expect } from '@playwright/test';
+const { test, expect } = require('@playwright/test');
+const { TEST_CREDENTIALS, WEB_BASE_URL, TEST_PRODUCT } = require('../config/env');
 
 test('Web Automation' , async ({ page }) =>
 {
     const products = page.locator(".card-body")
-    const productName = "ZARA COAT 3"
-    const email = "ayan@example.com"
-    await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill(email);
-    await page.locator("#userPassword").type("Ayan@123");
+    const productName = TEST_PRODUCT;
+    const email = TEST_CREDENTIALS.email;
+    await page.goto(WEB_BASE_URL);
+    await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
+    await page.locator("#userPassword").fill(TEST_CREDENTIALS.password);
     await page.locator("[value='Login']").click();
     await page.waitForLoadState('networkidle');
     await page.locator(".card-body b").first().waitFor();
@@ -18,13 +19,13 @@ test('Web Automation' , async ({ page }) =>
     {
             if (await products.nth(i).locator("b").textContent() == productName)
             {
-                await products.nth(i).locator("text = Add To Cart").click();
+                await products.nth(i).getByRole('button', { name: 'Add To Cart' }).click();
                 break;
             }
     }
     await page.locator("[routerlink*='cart']").click();
     await page.locator("div li").first().waitFor();
-    const bool = await page.locator("h3:has-text('Zara Coat 3')").isVisible();
+    const bool = await page.locator("h3:has-text('ADIDAS ORIGINAL')").isVisible();
     expect(bool).toBeTruthy();
     await page.locator("text=Checkout").click();
     await page.locator('.field input.txt').nth(0).fill("");
@@ -72,5 +73,4 @@ test('Web Automation' , async ({ page }) =>
             break;
         }
     };   
-    await page.pause();
 });
