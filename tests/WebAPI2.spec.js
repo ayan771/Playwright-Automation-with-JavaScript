@@ -2,15 +2,17 @@
 
 //test browser-> .json , cart-,order, orderdetails,orderhistory
 const {test, expect} = require('@playwright/test');
+const { WEB_BASE_URL, TEST_PRODUCT_2 } = require('../config/env');
 let webContext;
 
 test.beforeAll(async({browser})=>
 {  
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto("https://rahulshettyacademy.com/client");
-    await page.locator("#userEmail").fill("anshika@gmail.com");
+    await page.goto(WEB_BASE_URL);
+    // This email and password is provided by the instructor and its this is only for this file so i have kept it hardcoded
     await page.locator("#userPassword").type("Iamking@000");
+    await page.locator("#userEmail").fill("anshika@gmail.com") 
     await page.locator("[value='Login']").click();
     await page.waitForLoadState('networkidle');
     await context.storageState({path: 'state.json'});
@@ -20,10 +22,10 @@ test.beforeAll(async({browser})=>
 
 test('Client App login', async ()=>
 {
-    const email = "";
-    const productName = 'Zara Coat 4';
+    const email = "anshika@gmail.com"
+    const productName = TEST_PRODUCT_2;
     const page =  await webContext.newPage();
-    await page.goto("https://rahulshettyacademy.com/client");
+    await page.goto(WEB_BASE_URL);
     const products = page.locator(".card-body");
     const titles= await page.locator(".card-body b").allTextContents();
    console.log(titles);
@@ -39,16 +41,16 @@ test('Client App login', async ()=>
    }
    await page.locator("[routerlink*='cart']").click();
    await page.locator("div li").first().waitFor();
-   const bool =await page.locator("h3:has-text('Zara Coat 4')").isVisible();
+   const bool =await page.locator("h3:has-text('ZARA COAT 3')").isVisible();
    expect(bool).toBeTruthy();
    await page.locator("text=Checkout").click();
    await page.locator("[placeholder*='Country']").type("ind",{delay:100});
    const dropdown = page.locator(".ta-results");
    await dropdown.waitFor();
-   optionsCount = await dropdown.locator("button").count();
+   const optionsCount = await dropdown.locator("button").count();
    for(let i =0;i< optionsCount; ++i)
    {
-       text =  await dropdown.locator("button").nth(i).textContent();
+       const text =  await dropdown.locator("button").nth(i).textContent();
        if(text === " India")
        {
           await dropdown.locator("button").nth(i).click();
@@ -82,8 +84,7 @@ expect(orderId.includes(orderIdDetails)).toBeTruthy();
 });
 test('Test case 2', async ()=>
 {
-    const email = "";
-    const productName = 'Zara Coat 4';
+    const productName = TEST_PRODUCT_2;
     const page =  await webContext.newPage();
     await page.goto("https://rahulshettyacademy.com/client");
     await page.waitForLoadState('networkidle');

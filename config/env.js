@@ -31,4 +31,16 @@ module.exports = {
         process.env.TEST_PRODUCT_ID ??
         "6960eae1c941646b7a8b3ed3",
 
+    WEB_ORDER_URL:
+        process.env.WEB_ORDER_URL ??
+        "https://rahulshettyacademy.com/api/ecom/order/create-order",
+
+    TEST_PRODUCT:
+        process.env.TEST_PRODUCT ??
+        "ADIDAS ORIGINAL",
+
+    TEST_PRODUCT_2:
+        process.env.TEST_PRODUCT_2 ??
+        "ZARA COAT 3"
+
 };

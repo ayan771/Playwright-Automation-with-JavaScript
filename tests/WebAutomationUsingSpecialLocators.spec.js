@@ -1,14 +1,16 @@
 import { test, expect } from '@playwright/test';
-import { TEST_CREDENTIALS,  WEB_BASE_URL } from '../config/env';
+import { TEST_CREDENTIALS, WEB_BASE_URL } from '../config/env';
 
 test('Web App Logion', async ({ page }) => {
 
    await page.goto(WEB_BASE_URL);
 
+   const email = TEST_CREDENTIALS.email;
+   const password = TEST_CREDENTIALS.password
    const productName = 'ZARA COAT 3';
    const products = page.locator(".card-body");
-   await page.locator("#userEmail").fill(TEST_CREDENTIALS.email);
-   await page.locator("#userPassword").type(TEST_CREDENTIALS.password);
+   await page.locator("#userEmail").fill(email);
+   await page.locator("#userPassword").type(password);
    await page.locator("[value='Login']").click();
    await page.locator(".card-body b").first().waitFor();
    const titles = await page.locator(".card-body b").allTextContents();

@@ -1,3 +1,5 @@
+const { WEB_ORDER_URL } = require("../../config/env");
+
 class APiUtils
 {
     constructor(apiCall,loginPayload)
@@ -42,7 +44,7 @@ class APiUtils
 
         let response ={};
         response.token = await this.getToken();
-        const orderResponse = await this.apiCall.post("https://rahulshettyacademy.com/api/ecom/order/create-order",
+        const orderResponse = await this.apiCall.post(WEB_ORDER_URL,
             {
                 data: orderPayload,
                 headers: {
